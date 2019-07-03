@@ -12,26 +12,31 @@ class MyThread(threading.Thread):
         boolArr[i]=False
         #print("an item has been expired")
 
-while True:
-    i=int(input("please choose one \n1. enter new val \n2. check for old val \n3. exit"))
-    if i==1:
-        dataArr.append(input("enter a value"))
-        timeArr.append(float(input("enter time")))
-        boolArr.append(True)
-        thr=MyThread()
-        thr.start()
-        continue
-    elif i==2:
-        data=input("enter a value")
-        if data in dataArr:
-            if boolArr[dataArr.index(data)]:
-                print("item  exist ")
-            else:
-                print("item expired")
+def addCash(v,t):
+    dataArr.append(v)
+    timeArr.append(t)
+    boolArr.append(True)
+    thr = MyThread()
+    thr.start()
+def CheckCash(data):
+    if data in dataArr:
+        if boolArr[dataArr.index(data)]:
+            return "item  exist "
         else:
-            print("item not exist")
-    elif i==3:
-        break
+            return "item expired"
     else:
-        print("pls try again")
+        return "item not exist"
+if __name__ == '__main__':
+    while True:
+        i = int(input("please choose one \n1. enter new val \n2. check for old val \n3. exit"))
+        if i == 1:
+            addCash(input("enter a value"), float(input("enter time")))
+        elif i == 2:
+            data = input("enter a value")
+            print(CheckCash(data))
+
+        elif i == 3:
+            break
+        else:
+            print("pls try again")
 
