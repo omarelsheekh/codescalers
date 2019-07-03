@@ -45,15 +45,16 @@ class INI:
         else:
             return False
 
-sample1 = """
-[general]
-appname = configparser
-version=0.1
-  [author]
-name =xmonader
-email =notxmonader@gmail.com
-"""
-ini=INI(sample1)
-print(ini.get_properity("general","appname"))
-print(ini.has_properity("author","name"))
-print(ini.has_properity("author","pass"))
+if __name__ == '__main__':
+    sample1 = """
+    [general]
+    appname = configparser
+    version=0.1
+      [author]
+    name =xmonader
+    email =notxmonader@gmail.com
+    """
+    ini = INI(sample1)
+    print(ini.get_properity("general", "appname"))
+    print(ini.has_properity("author", "name"))
+    print(ini.has_properity("author", "pass"))
