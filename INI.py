@@ -1,8 +1,10 @@
+
 class INI:
     def __init__(self,s):
         self.dict={}
         secName=""
         for line in s.split("\n"):
+            line=line.strip()
             if self.is_comment(line) or self.is_empty(line):
                 continue
             elif self.is_section(line):
@@ -20,8 +22,10 @@ class INI:
         return pos != -1 and line[0:pos].find('=') == -1 and line[0:pos].find(';') == -1
 
     def is_section(self, line):
-        return line[0] == '[' and line[-1] == ']' and line[1:-1].find(']') == -1
-
+        if len(line)>1:
+            return line[0] == '[' and line[-1] == ']' and line[1:-1].find(']') == -1
+        else:
+            return False
     def is_comment(self, line):
         return len(line) > 0 and (line[0] == ';' or line[0] == '#')
 
@@ -45,7 +49,7 @@ sample1 = """
 [general]
 appname = configparser
 version=0.1
-[author]
+  [author]
 name =xmonader
 email =notxmonader@gmail.com
 """
