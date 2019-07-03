@@ -1,8 +1,3 @@
-class KeyVal:
-    def __init__(self,key,val):
-        self.key=key
-        self.val=val
-
 class INI:
     def __init__(self,s):
         self.dict={}
