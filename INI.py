@@ -40,8 +40,11 @@ class INI:
     def has_section(self,secName):
         return  secName in self.dict
     def has_properity(self,secName,k):
-        keyvalDict=self.dict[secName]
-        return k in keyvalDict
+        if secName in self.dict:
+            keyvalDict=self.dict[secName]
+            return k in keyvalDict
+        else:
+            return False
 
 sample1 = """
 [general]
@@ -53,5 +56,5 @@ email =notxmonader@gmail.com
 """
 ini=INI(sample1)
 print(ini.get_properity("general","appname"))
-print(ini.has_properity("author","email"))
+print(ini.has_properity("author","name"))
 print(ini.has_properity("author","pass"))
