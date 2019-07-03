@@ -14,10 +14,10 @@ class DMIDCode:
         self.dict[k]=v
 
         def getValue(self,s):
-        if s in self.dict:
-            return self.dict[s]
-        else:
-            return "item not found"
+            if s in self.dict:
+                return self.dict[s]
+            else:
+                return "item not found"
 
 data= """# dmidecode 3.1
 Getting SMBIOS data from sysfs.
